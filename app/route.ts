@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 const U = 'https://wswbehlcuxqxyinousql.supabase.co';
 const K = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indzd2JlaGxjdXhxeHlpbm91c3FsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYyNDU2OTIsImV4cCI6MjA5MTgyMTY5Mn0.pskPJ1U-i0Vjg_suxMfXNqHOtKJpWchf0-CzLUQIzRo';
+// fix: RLP was blocking anon reads, now policy added
 export async function GET() {
   const r = await fetch(
     `${U}/rest/v1/_deploy_assets?key=in.(html_chunk_00,html_chunk_01,html_chunk_02,html_chunk_03,html_chunk_04,html_chunk_05,html_chunk_06,html_chunk_07)&select=key,value&order=key`,
