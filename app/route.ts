@@ -9,10 +9,11 @@ export async function GET() {
   const rows: {key:string;value:string}[] = await r.json();
   rows.sort((a,b)=>a.key.localeCompare(b.key));
   const b64 = rows.map(x=>x.value).join('');
-  const bytes = Uint8Array.from(atob(b64),c=>c.charCodeAt(0));
-  const raw = new TextDecoder('utf-8',{fatal:false}).decode(bytes);
-  const docStart = raw.indexOf('<!DOCTYPE html>');
-  const html = (docStart >= 0 ? raw.slice(docStart) : raw)
+  const c = Uint8Array.from(atob(b64),x=>x.charCodeAt(0));
+  const ds = new DecompressionStream('gzip');
+  const w = ds.writable.getWriter();
+  w.write(c); w.close();
+  const html = (await new Response(ds.readable).text())
     .replace('</head>','<script async src="https://www.googletagmanager.com/gtag/js?id=G-N5CMQL9C4M"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-N5CMQL9C4M");</script></head>');
   return new NextResponse(html,{
     headers:{
