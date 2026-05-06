@@ -13,8 +13,7 @@ export async function GET() {
   const ds = new DecompressionStream('gzip');
   const w = ds.writable.getWriter();
   w.write(c); w.close();
-  const html = (await new Response(ds.readable).text())
-    .replace('</head>','<script async src="https://www.googletagmanager.com/gtag/js?id=G-N5CMQL9C4M"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-N5CMQL9C4M");</script></head>');
+  const html = await new Response(ds.readable).text();
   return new NextResponse(html,{
     headers:{
       'Content-Type':'text/html; charset=utf-8',
