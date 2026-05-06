@@ -1,3 +1,5 @@
+import Script from 'next/script';
+
 export const metadata = {
   title: 'House Sevillana - Alquiler Vacacional Sevilla Centro',
   description: 'Casa de 290m² con 6 dormitorios, parking privado y patio en el corazon de Sevilla. Reserva directa sin comisiones. VFT/SE/01179.',
@@ -8,6 +10,7 @@ export const metadata = {
     type: 'website',
   },
 };
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
@@ -20,6 +23,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body style={{ margin: 0, fontFamily: "'Outfit', system-ui, sans-serif", color: '#111' }}>
         {children}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-N5CMQL9C4M"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-N5CMQL9C4M');
+          `}
+        </Script>
       </body>
     </html>
   );
