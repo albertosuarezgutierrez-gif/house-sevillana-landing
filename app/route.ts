@@ -10,7 +10,9 @@ export async function GET() {
   rows.sort((a,b)=>a.key.localeCompare(b.key));
   const b64 = rows.map(x=>x.value).join('');
   const bytes = Uint8Array.from(atob(b64),c=>c.charCodeAt(0));
-  const html = (new TextDecoder('utf-8').decode(bytes))
+  const raw = new TextDecoder('utf-8',{fatal:false}).decode(bytes);
+  const docStart = raw.indexOf('<!DOCTYPE html>');
+  const html = (docStart >= 0 ? raw.slice(docStart) : raw)
     .replace('</head>','<script async src="https://www.googletagmanager.com/gtag/js?id=G-N5CMQL9C4M"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-N5CMQL9C4M");</script></head>');
   return new NextResponse(html,{
     headers:{
