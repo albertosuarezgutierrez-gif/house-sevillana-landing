@@ -259,7 +259,7 @@ summary{
   gap:1rem;letter-spacing:-.015em;color:var(--text);
 }
 summary::after{content:'+';color:var(--clay);font-size:1.25rem;font-weight:300;flex-shrink:0;line-height:1}
-details[open] summary::after{content:'\2212'}
+details[open] summary::after{content:'-'}
 summary::-webkit-details-marker{display:none}
 .fa{padding:0 2rem 1.25rem 0;color:var(--muted);font-size:.9rem;line-height:1.78;font-weight:300}
 
