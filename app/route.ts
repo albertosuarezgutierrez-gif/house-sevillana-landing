@@ -1,13 +1,661 @@
 import { NextResponse } from 'next/server';
 
-const HTML = "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n<meta charset=\"UTF-8\"/>\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\"/>\n<link rel=\"icon\" type=\"image/svg+xml\" href=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNSIgZmlsbD0iI0IwNEUyQSIvPjx0ZXh0IHg9IjE2IiB5PSIyMS41IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIxNC41IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjAuNSI+SFM8L3RleHQ+PC9zdmc+\"/>\n<title>Casa con Parking en el Centro de Sevilla | House Sevillana</title>\n<meta name=\"description\" content=\"290 m\u00b2 en el casco hist\u00f3rico de Sevilla. 6 dormitorios, 4 ba\u00f1os, parking privado, terraza y patio andaluz. Hasta 12 personas. Reserva directa sin comisiones.\"/>\n<link rel=\"canonical\" href=\"https://www.housesevillana.es/\"/>\n<meta property=\"og:type\" content=\"website\"/>\n<meta property=\"og:url\" content=\"https://www.housesevillana.es/\"/>\n<meta property=\"og:title\" content=\"Casa con Parking en el Centro de Sevilla | House Sevillana\"/>\n<meta property=\"og:description\" content=\"290 m\u00b2 \u00b7 6 dormitorios \u00b7 4 ba\u00f1os \u00b7 Parking privado \u00b7 Terraza \u00b7 Patio andaluz\"/>\n<meta property=\"og:image\" content=\"https://lh3.googleusercontent.com/d/1rDXs-fjAmmDQFTfZ7fTutPZvosAV2GMo\"/>\n<meta name=\"twitter:card\" content=\"summary_large_image\"/>\n<meta name=\"twitter:image\" content=\"https://lh3.googleusercontent.com/d/1rDXs-fjAmmDQFTfZ7fTutPZvosAV2GMo\"/>\n<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"LodgingBusiness\",\"name\":\"House Sevillana\",\"description\":\"Casa de 290 m2 en el casco historico de Sevilla. 6 dormitorios, 4 banos, parking privado, patio andaluz.\",\"url\":\"https://www.housesevillana.es\",\"telephone\":\"+34637349990\",\"identifier\":{\"@type\":\"PropertyValue\",\"propertyID\":\"VFT\",\"value\":\"VFT/SE/01179\"},\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Calle Socorro 24\",\"addressLocality\":\"Sevilla\",\"postalCode\":\"41003\",\"addressCountry\":\"ES\"},\"geo\":{\"@type\":\"GeoCoordinates\",\"latitude\":37.3942,\"longitude\":-5.9924},\"numberOfRooms\":6,\"checkinTime\":\"15:00\",\"checkoutTime\":\"12:00\"}\n</script>\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=G-N5CMQL9C4M\"></script>\n<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N5CMQL9C4M');</script>\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"/>\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin/>\n<link href=\"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap\" rel=\"stylesheet\"/>\n<style>\n*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}\n:root{--terra:#B04E2A;--terra-l:#C96040;--cream:#FAF7F2;--dark:#1A1410;--dark2:#2C2018;--muted:#7A6858;--white:#fff;--gold:#C4932A;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Outfit',system-ui,sans-serif;--r:12px;--sh:0 4px 24px rgba(26,20,16,.12)}\nhtml{scroll-behavior:smooth}\nbody{font-family:var(--sans);background:var(--cream);color:var(--dark);overflow-x:hidden}\na{text-decoration:none}\nnav{position:sticky;top:0;z-index:100;background:rgba(250,247,242,.96);backdrop-filter:blur(12px);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;border-bottom:1px solid rgba(176,78,42,.1)}\n.brand{font-family:var(--serif);font-size:1.4rem;font-weight:600;color:var(--dark);letter-spacing:.02em}\n.nav-links{display:flex;align-items:center;gap:1.75rem}\n.nav-links a{font-size:.9rem;color:var(--muted);font-weight:500;transition:color .2s}\n.nav-links a:hover{color:var(--terra)}\n.btn-nav{background:var(--terra)!important;color:var(--white)!important;padding:.45rem 1.1rem;border-radius:50px}\n.ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.4rem}\n.ham span{display:block;width:22px;height:2px;background:var(--dark);border-radius:2px}\n.mob{display:none;flex-direction:column;background:var(--white);border-top:1px solid rgba(176,78,42,.1);padding:1rem 1.5rem 1.5rem;gap:1rem}\n.mob a{font-size:1rem;color:var(--dark);font-weight:500;padding:.5rem 0;border-bottom:1px solid rgba(0,0,0,.06)}\n.mob-btn{background:var(--terra);color:var(--white)!important;padding:.7rem 1.5rem;border-radius:50px;text-align:center;margin-top:.5rem}\n.mob.open{display:flex}\n.hero{display:grid;grid-template-columns:1fr 1fr;min-height:88vh;align-items:center;padding:4rem 5%;gap:3rem}\n.badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(176,78,42,.1);color:var(--terra);font-size:.8rem;font-weight:600;padding:.35rem .9rem;border-radius:50px;margin-bottom:1.25rem}\nh1{font-family:var(--serif);font-size:clamp(2.4rem,5vw,4rem);font-weight:600;line-height:1.15;margin-bottom:1.1rem}\nh1 em{font-style:italic;color:var(--terra)}\n.sub{font-size:1.05rem;color:var(--muted);line-height:1.65;margin-bottom:1.75rem;max-width:480px}\n.pills{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2rem}\n.pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--white);border:1px solid rgba(176,78,42,.2);font-size:.82rem;font-weight:500;padding:.4rem .85rem;border-radius:50px}\n.ctas{display:flex;gap:1rem;flex-wrap:wrap}\n.btn-p{background:var(--terra);color:var(--white);padding:.85rem 2rem;border-radius:50px;font-size:.95rem;font-weight:600;transition:background .2s;display:inline-block}\n.btn-p:hover{background:var(--terra-l)}\n.btn-s{border:2px solid var(--terra);color:var(--terra);padding:.75rem 1.75rem;border-radius:50px;font-size:.95rem;font-weight:600;transition:all .2s;display:inline-block}\n.btn-s:hover{background:var(--terra);color:var(--white)}\n.img-wrap{border-radius:20px;overflow:hidden;aspect-ratio:4/3;background:#ddd}\n.img-wrap img{width:100%;height:100%;object-fit:cover}\n.stats{display:flex;gap:.75rem;margin-top:1.5rem;flex-wrap:wrap}\n.stat{background:var(--white);border:1px solid rgba(176,78,42,.15);border-radius:var(--r);padding:.75rem 1rem;text-align:center;flex:1;min-width:90px}\n.sn{font-family:var(--serif);font-size:1.6rem;font-weight:600;color:var(--terra);line-height:1}\n.sl{font-size:.7rem;color:var(--muted);font-weight:500;margin-top:.2rem;text-transform:uppercase;letter-spacing:.06em}\n.banner{background:var(--terra);color:var(--white);padding:1rem 5%;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}\n.banner a{color:var(--white);font-weight:600;border:2px solid rgba(255,255,255,.6);padding:.4rem 1rem;border-radius:50px;font-size:.85rem;white-space:nowrap}\nsection{padding:5rem 5%}\n.tag{font-size:.75rem;font-weight:600;color:var(--terra);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem}\nh2{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:600;line-height:1.2;margin-bottom:1rem}\n.s-sub{font-size:1rem;color:var(--muted);line-height:1.65;max-width:560px;margin-bottom:3rem}\n.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}\n.feat{background:var(--white);border:1px solid rgba(176,78,42,.12);border-radius:var(--r);padding:1.75rem;transition:box-shadow .2s}\n.feat:hover{box-shadow:var(--sh)}\n.ficon{width:48px;height:48px;background:rgba(176,78,42,.08);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;color:var(--terra)}\n.ft{font-weight:600;font-size:1rem;margin-bottom:.35rem}\n.fd{font-size:.88rem;color:var(--muted);line-height:1.55}\n.gal{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:260px 260px;gap:1rem}\n.gal-main{grid-row:1/2;grid-column:1/3}\n.gi{border-radius:var(--r);overflow:hidden;background:#e0d8d0}\n.gi img{width:100%;height:100%;object-fit:cover;transition:transform .4s;display:block}\n.gi:hover img{transform:scale(1.04)}\n.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}\n.map{height:360px;border-radius:var(--r);overflow:hidden;border:1px solid rgba(176,78,42,.15)}\n.map iframe{width:100%;height:100%;border:none}\n.dlist{list-style:none}\n.dlist li{display:flex;justify-content:space-between;padding:.75rem 0;border-bottom:1px solid rgba(0,0,0,.07);font-size:.92rem}\n.dlist li:last-child{border-bottom:none}\n.dp{font-weight:500}\n.dt{color:var(--terra);font-weight:600}\n.faq-wrap{max-width:720px}\ndetails{border-bottom:1px solid rgba(176,78,42,.15)}\nsummary{padding:1.25rem 0;cursor:pointer;font-weight:600;font-size:1rem;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem}\nsummary::after{content:'+';color:var(--terra);font-size:1.3rem;font-weight:400;flex-shrink:0}\ndetails[open] summary::after{content:'-'}\nsummary::-webkit-details-marker{display:none}\n.fa{padding:0 0 1.25rem;color:var(--muted);font-size:.95rem;line-height:1.7}\n.book-sec{background:var(--dark);padding:5rem 5%;text-align:center}\n.book-sec .tag{color:rgba(196,147,42,.9)}\n.book-sec h2{color:var(--white)}\n.book-sec .s-sub{color:rgba(255,255,255,.7);margin:0 auto 2.5rem}\n#smoobu-widget{min-height:600px;width:100%}\n.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}\n.rev{background:var(--white);border:1px solid rgba(176,78,42,.12);border-radius:var(--r);padding:1.5rem}\n.stars{color:var(--gold);margin-bottom:.75rem}\n.rt{font-size:.9rem;color:var(--muted);line-height:1.6;margin-bottom:1rem;font-style:italic}\n.ra{font-size:.82rem;font-weight:600}\n.rs{font-size:.75rem;color:var(--muted)}\nfooter{background:var(--dark2);color:rgba(255,255,255,.8);padding:3rem 5% 1.5rem}\n.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}\n.fb{font-family:var(--serif);font-size:1.5rem;color:var(--white);margin-bottom:.75rem}\n.ft2{font-size:.88rem;color:rgba(255,255,255,.55);line-height:1.6;max-width:260px}\n.fh{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.5);margin-bottom:1rem}\n.fl{list-style:none;display:flex;flex-direction:column;gap:.6rem}\n.fl a{font-size:.88rem;color:rgba(255,255,255,.7);transition:color .2s}\n.fl a:hover{color:var(--gold)}\n.fbot{border-top:1px solid rgba(255,255,255,.1);padding-top:1.25rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem}\n.fbot p,.fvft{font-size:.8rem;color:rgba(255,255,255,.4)}\n@media(max-width:1024px){.hero{grid-template-columns:1fr;min-height:auto;padding-top:3rem}.hero-right{order:-1}.feat-grid{grid-template-columns:1fr 1fr}.rev-grid{grid-template-columns:1fr 1fr}.fg{grid-template-columns:1fr 1fr}}\n@media(max-width:768px){nav{padding:0 1.25rem}.nav-links{display:none}.ham{display:flex}section{padding:3rem 1.25rem}.gal{grid-template-columns:1fr 1fr;grid-template-rows:160px 160px 160px}.gal-main{grid-row:1/2;grid-column:1/3}.feat-grid{grid-template-columns:1fr}.loc-grid{grid-template-columns:1fr;gap:1.5rem}.map{height:280px}.rev-grid{grid-template-columns:1fr}.fg{grid-template-columns:1fr;gap:1.75rem}.fbot{flex-direction:column;align-items:center;text-align:center}.banner{flex-direction:column;align-items:flex-start}}\n</style>\n</head>\n<body>\n<nav>\n  <a href=\"/\" class=\"brand\">House Sevillana</a>\n  <div class=\"nav-links\">\n    <a href=\"#caracteristicas\">La casa</a>\n    <a href=\"#galeria\">Fotos</a>\n    <a href=\"#ubicacion\">Ubicacion</a>\n    <a href=\"#faq\">FAQ</a>\n    <a href=\"#reserva\" class=\"btn-nav\">Reservar directo</a>\n  </div>\n  <button class=\"ham\" id=\"ham\" aria-label=\"Menu\"><span></span><span></span><span></span></button>\n</nav>\n<div class=\"mob\" id=\"mob\">\n  <a href=\"#caracteristicas\" onclick=\"cm()\">La casa</a>\n  <a href=\"#galeria\" onclick=\"cm()\">Fotos</a>\n  <a href=\"#ubicacion\" onclick=\"cm()\">Ubicacion</a>\n  <a href=\"#faq\" onclick=\"cm()\">FAQ</a>\n  <a href=\"#reserva\" class=\"mob-btn\" onclick=\"cm()\">Reservar directo</a>\n</div>\n\n<section class=\"hero\" id=\"inicio\">\n  <div>\n    <div class=\"badge\">&#9733; Reserva directa sin comisiones</div>\n    <h1>Casa con <em>parking</em> en el corazon de Sevilla</h1>\n    <p class=\"sub\">290 m2 reformados en el casco historico. 6 dormitorios, 4 banos, terraza, patio andaluz y parking privado. Para grupos y familias de hasta 12 personas.</p>\n    <div class=\"pills\">\n      <span class=\"pill\">&#127968; 290 m2</span>\n      <span class=\"pill\">&#128717; 6 dorm - 4 banos</span>\n      <span class=\"pill\">&#128663; Parking privado</span>\n      <span class=\"pill\">&#9728; Terraza + Patio</span>\n      <span class=\"pill\">&#128101; Hasta 12 personas</span>\n    </div>\n    <div class=\"ctas\">\n      <a href=\"#reserva\" class=\"btn-p\">Consultar disponibilidad</a>\n      <a href=\"#caracteristicas\" class=\"btn-s\">Ver la casa</a>\n    </div>\n  </div>\n  <div class=\"hero-right\">\n    <div class=\"img-wrap\">\n      <img src=\"https://lh3.googleusercontent.com/d/1rDXs-fjAmmDQFTfZ7fTutPZvosAV2GMo\" alt=\"Salon House Sevillana\" loading=\"eager\"/>\n    </div>\n    <div class=\"stats\">\n      <div class=\"stat\"><div class=\"sn\">290</div><div class=\"sl\">m2</div></div>\n      <div class=\"stat\"><div class=\"sn\">6</div><div class=\"sl\">Dormitorios</div></div>\n      <div class=\"stat\"><div class=\"sn\">4</div><div class=\"sl\">Banos</div></div>\n      <div class=\"stat\"><div class=\"sn\">12</div><div class=\"sl\">Huespedes</div></div>\n    </div>\n  </div>\n</section>\n\n<div class=\"banner\">\n  <div><strong>Reservas en Booking.com?</strong> <span>Reservando directo aqui te ahorras hasta un 19,72% en comisiones.</span></div>\n  <a href=\"#reserva\">Reservar directo</a>\n</div>\n\n<section id=\"caracteristicas\">\n  <div class=\"tag\">La casa</div>\n  <h2>Una casa para vivirla</h2>\n  <p class=\"s-sub\">290 m2 reformados con materiales de calidad en el corazon del casco historico.</p>\n  <div class=\"feat-grid\">\n    <div class=\"feat\"><div class=\"ficon\">&#127968;</div><div class=\"ft\">6 dormitorios dobles</div><div class=\"fd\">Todos con camas de matrimonio. Capacidad para 12 personas.</div></div>\n    <div class=\"feat\"><div class=\"ficon\">&#128705;</div><div class=\"ft\">4 banos completos</div><div class=\"fd\">Con ducha o banera, toallas y articulos de bienvenida.</div></div>\n    <div class=\"feat\"><div class=\"ficon\">&#128663;</div><div class=\"ft\">Parking privado</div><div class=\"fd\">1 plaza de garaje en el edificio. Disponible con reserva previa.</div></div>\n    <div class=\"feat\"><div class=\"ficon\">&#127795;</div><div class=\"ft\">Patio andaluz</div><div class=\"fd\">Autentico patio sevillano con fuente, ideal para desayunar.</div></div>\n    <div class=\"feat\"><div class=\"ficon\">&#9728;</div><div class=\"ft\">Terraza con vistas</div><div class=\"fd\">Terraza en la azotea con vistas al casco historico.</div></div>\n    <div class=\"feat\"><div class=\"ficon\">&#10024;</div><div class=\"ft\">Aire + WiFi gratis</div><div class=\"fd\">Climatizacion en todas las habitaciones y WiFi de alta velocidad.</div></div>\n  </div>\n</section>\n\n<section id=\"galeria\" style=\"padding-top:0\">\n  <div class=\"tag\">Fotos</div>\n  <h2>La casa por dentro</h2>\n  <div class=\"gal\">\n    <div class=\"gi gal-main\"><img src=\"https://lh3.googleusercontent.com/d/1YRd-RfZKbIq-I8UqxzH3Qo4HP_6E_UF4\" alt=\"Fachada House Sevillana\" loading=\"lazy\"/></div>\n    <div class=\"gi\"><img src=\"https://lh3.googleusercontent.com/d/1rDXs-fjAmmDQFTfZ7fTutPZvosAV2GMo\" alt=\"Salon House Sevillana\" loading=\"lazy\"/></div>\n    <div class=\"gi\"><img src=\"https://lh3.googleusercontent.com/d/11KXrpvDr9wfO3W7ds0TSzMj1W7ixnQVQ\" alt=\"Dormitorio House Sevillana\" loading=\"lazy\"/></div>\n    <div class=\"gi\"><img src=\"https://lh3.googleusercontent.com/d/1oAiLqJlHLGc6iqIFtiXqZqTandNKewRf\" alt=\"Patio andaluz House Sevillana\" loading=\"lazy\"/></div>\n    <div class=\"gi\"><img src=\"https://lh3.googleusercontent.com/d/1nSzkddZhv8ul5HMXpVsfJZfL8XJZMuzd\" alt=\"Cocina House Sevillana\" loading=\"lazy\"/></div>\n  </div>\n</section>\n\n<section id=\"ubicacion\">\n  <div class=\"tag\">Ubicacion</div>\n  <h2>En el corazon de Sevilla</h2>\n  <p class=\"s-sub\">Calle Socorro 24, casco historico (41003). A pasos de los principales monumentos.</p>\n  <div class=\"loc-grid\">\n    <div class=\"map\"><iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3170.8!2d-5.9924!3d37.3942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDIzJzM5LjEiTiA1wrA1OSczMi42Ilc!5e0!3m2!1ses!2ses!4v1\" allowfullscreen loading=\"lazy\" title=\"Ubicacion House Sevillana\"></iframe></div>\n    <ul class=\"dlist\">\n      <li><span class=\"dp\">Catedral de Sevilla</span><span class=\"dt\">10 min a pie</span></li>\n      <li><span class=\"dp\">Real Alcazar</span><span class=\"dt\">12 min a pie</span></li>\n      <li><span class=\"dp\">Plaza de Espana</span><span class=\"dt\">15 min a pie</span></li>\n      <li><span class=\"dp\">Torre del Oro</span><span class=\"dt\">14 min a pie</span></li>\n      <li><span class=\"dp\">Barrio de Triana</span><span class=\"dt\">20 min a pie</span></li>\n      <li><span class=\"dp\">Estacion Santa Justa</span><span class=\"dt\">25 min a pie</span></li>\n      <li><span class=\"dp\">Aeropuerto SVQ</span><span class=\"dt\">20 min en taxi</span></li>\n    </ul>\n  </div>\n</section>\n\n<section id=\"faq\">\n  <div class=\"tag\">Preguntas frecuentes</div>\n  <h2>Todo lo que necesitas saber</h2>\n  <div class=\"faq-wrap\">\n    <details open><summary>Tiene parking privado House Sevillana?</summary><div class=\"fa\">Si. Dispone de una plaza de garaje privado en el mismo edificio. Se reserva con la casa y tiene coste adicional.</div></details>\n    <details><summary>Cuantas personas caben en la casa?</summary><div class=\"fa\">6 dormitorios dobles para hasta 12 personas. Perfecta para grupos, familias o celebraciones.</div></details>\n    <details><summary>Donde esta ubicada exactamente?</summary><div class=\"fa\">Calle Socorro 24, 41003 Sevilla, dentro del casco historico. A menos de 10 minutos a pie de la Catedral y el Alcazar.</div></details>\n    <details><summary>Que ventaja tiene reservar directamente?</summary><div class=\"fa\">Te ahorras la comision de las OTAs (hasta un 19,72% en Booking.com). Ademas puedes negociar condiciones directamente con el propietario.</div></details>\n    <details><summary>Cuales son los horarios de entrada y salida?</summary><div class=\"fa\">Check-in a partir de las 15:00 h. Check-out hasta las 12:00 h.</div></details>\n    <details><summary>Incluye ropa de cama y toallas?</summary><div class=\"fa\">Si. Ropa de cama y toallas para todos los huespedes incluidas en la reserva.</div></details>\n    <details><summary>Que licencia turistica tiene la propiedad?</summary><div class=\"fa\">VFT/SE/01179, inscrita en el Registro de Turismo de Andalucia.</div></details>\n  </div>\n</section>\n\n<section class=\"book-sec\" id=\"reserva\">\n  <div class=\"tag\">Reserva directa</div>\n  <h2>Comprueba disponibilidad</h2>\n  <p class=\"s-sub\">Reserva directamente sin intermediarios. Confirmacion inmediata.</p>\n  <div id=\"apartmentIframe352007\"></div>\n</section>\n\n<section id=\"resenas\">\n  <div class=\"tag\">Resenas</div>\n  <h2>Lo que dicen nuestros huespedes</h2>\n  <div class=\"rev-grid\">\n    <div class=\"rev\"><div class=\"stars\">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class=\"rt\">\"Casa espectacular. El patio andaluz es un sueno. Dormimos 10 personas comodisimas y el parking fue un plus enorme.\"</p><div class=\"ra\">Maria G.</div><div class=\"rs\">Booking.com - 9.8/10</div></div>\n    <div class=\"rev\"><div class=\"stars\">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class=\"rt\">\"Incredibly spacious house in the perfect location. The rooftop terrace with evening views was our favorite spot.\"</p><div class=\"ra\">James T.</div><div class=\"rs\">Airbnb - 5/5</div></div>\n    <div class=\"rev\"><div class=\"stars\">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class=\"rt\">\"Maison parfaite pour un grand groupe. Le proprietaire tres reactif. On recommande a 100%.\"</p><div class=\"ra\">Claire D.</div><div class=\"rs\">Booking.com - 9.6/10</div></div>\n  </div>\n</section>\n\n<footer>\n  <div class=\"fg\">\n    <div>\n      <div class=\"fb\">House Sevillana</div>\n      <p class=\"ft2\">Casa turistica en el casco historico de Sevilla. Reserva directa sin comisiones.</p>\n      <p style=\"margin-top:.75rem;font-size:.8rem;color:rgba(255,255,255,.4)\">VFT/SE/01179</p>\n    </div>\n    <div><div class=\"fh\">La casa</div><ul class=\"fl\"><li><a href=\"#caracteristicas\">Caracteristicas</a></li><li><a href=\"#galeria\">Galeria</a></li><li><a href=\"#ubicacion\">Ubicacion</a></li><li><a href=\"#faq\">FAQ</a></li></ul></div>\n    <div><div class=\"fh\">Reservar</div><ul class=\"fl\"><li><a href=\"#reserva\">Reserva directa</a></li><li><a href=\"https://www.booking.com\" target=\"_blank\" rel=\"noopener\">Booking.com</a></li><li><a href=\"https://www.airbnb.es\" target=\"_blank\" rel=\"noopener\">Airbnb</a></li></ul></div>\n    <div><div class=\"fh\">Contacto</div><ul class=\"fl\"><li><a href=\"mailto:alberto.suarez.gutierrez@gmail.com\">alberto.suarez.gutierrez@gmail.com</a></li><li><a href=\"tel:+34637349990\">+34 637 349 990</a></li><li><a href=\"https://maps.google.com/?q=Calle+Socorro+24+Sevilla\" target=\"_blank\" rel=\"noopener\">Calle Socorro 24, Sevilla</a></li></ul></div>\n  </div>\n  <div class=\"fbot\">\n    <p>2024 House Sevillana - Bercell - Todos los derechos reservados</p>\n    <span class=\"fvft\">VFT/SE/01179 - Registro de Turismo de Andalucia</span>\n  </div>\n</footer>\n\n<script>\ndocument.getElementById('ham').onclick=function(){document.getElementById('mob').classList.toggle('open')};\nfunction cm(){document.getElementById('mob').classList.remove('open')}\n(function(){\n  var s=document.createElement('script');\n  s.src='https://login.smoobu.com/js/Settings/BookingToolIframe.js';\n  s.onload=function(){\n    BookingToolIframe.initialize({\n      url:'https://login.smoobu.com/es/booking-tool/iframe/103685/352007',\n      baseUrl:'https://login.smoobu.com',\n      target:'#apartmentIframe352007'\n    });\n  };\n  document.body.appendChild(s);\n})();\n</script>\n</body>\n</html>";
+const HTML = `<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNSIgZmlsbD0iI0IwNEUyQSIvPjx0ZXh0IHg9IjE2IiB5PSIyMS41IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIxNC41IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjAuNSI+SFM8L3RleHQ+PC9zdmc+"/>
+
+<!-- SEO Primary -->
+<title>Casa con Parking en el Centro de Sevilla | House Sevillana</title>
+<meta name="description" content="290 m² en el casco histórico de Sevilla. 6 dormitorios, 4 baños, parking privado, terraza y patio andaluz. Hasta 12 personas. Reserva directa sin comisiones."/>
+<link rel="canonical" href="https://www.housesevillana.es/"/>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://www.housesevillana.es/"/>
+<meta property="og:title" content="Casa con Parking en el Centro de Sevilla | House Sevillana"/>
+<meta property="og:description" content="290 m² · 6 dormitorios · 4 baños · Parking privado · Terraza · Patio andaluz · Hasta 12 personas"/>
+<meta property="og:image" content="https://lh3.googleusercontent.com/d/1rDXs-fjAmmDQFTfZ7fTutPZvosAV2GMo"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://lh3.googleusercontent.com/d/1rDXs-fjAmmDQFTfZ7fTutPZvosAV2GMo"/>
+
+<!-- Schema.org JSON-LD -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LodgingBusiness","name":"House Sevillana","description":"Casa de 290 m2 en el casco historico de Sevilla. 6 dormitorios, 4 banos, parking privado, patio andaluz. Ideal para grupos y familias de hasta 12 personas.","url":"https://www.housesevillana.es","telephone":"+34637349990","identifier":{"@type":"PropertyValue","propertyID":"VFT","value":"VFT/SE/01179"},"address":{"@type":"PostalAddress","streetAddress":"Calle Socorro 24","addressLocality":"Sevilla","postalCode":"41003","addressCountry":"ES"},"geo":{"@type":"GeoCoordinates","latitude":37.3942,"longitude":-5.9924},"numberOfRooms":6,"amenityFeature":[{"@type":"LocationFeatureSpecification","name":"Parking privado","value":true},{"@type":"LocationFeatureSpecification","name":"Patio andaluz","value":true},{"@type":"LocationFeatureSpecification","name":"Terraza","value":true},{"@type":"LocationFeatureSpecification","name":"Aire acondicionado","value":true},{"@type":"LocationFeatureSpecification","name":"WiFi gratis","value":true}],"checkinTime":"15:00","checkoutTime":"12:00","petsAllowed":false,"occupancy":{"@type":"QuantitativeValue","maxValue":12}}</script>
+
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N5CMQL9C4M"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N5CMQL9C4M');</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --night:#0D0907;
+  --night2:#1A1008;
+  --night3:#231508;
+  --cream:#F9F5F0;
+  --white:#FFFFFF;
+  --clay:#C4571F;
+  --clay-l:#D96830;
+  --text:#1A0F07;
+  --muted:#6B5B50;
+  --muted2:#8A7B72;
+  --gold:#C4932A;
+  --accent-warm:#F4A47A;
+  --border:rgba(196,87,31,0.13);
+  --border-light:rgba(196,87,31,0.07);
+  --sh:0 2px 16px rgba(13,9,7,0.07),0 0 0 1px rgba(196,87,31,0.06);
+  --sh-hover:0 10px 40px rgba(13,9,7,0.13),0 0 0 1px rgba(196,87,31,0.10);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Outfit',system-ui,sans-serif;
+  --max:1180px;
+  --r:14px;
+}
+
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--cream);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{text-decoration:none}
+img{display:block}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2.5rem;height:68px;
+  transition:background .4s,backdrop-filter .4s,border-color .4s;
+}
+nav.scrolled{
+  background:rgba(13,9,7,0.90);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.brand{font-family:var(--serif);font-size:1.45rem;font-weight:400;color:var(--white);letter-spacing:.04em}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-size:.875rem;color:rgba(255,255,255,.65);font-weight:400;letter-spacing:-.012em;transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.btn-nav{
+  background:var(--clay)!important;color:var(--white)!important;
+  padding:.45rem 1.25rem;border-radius:9999px;font-size:.85rem;font-weight:500;
+  letter-spacing:-.01em;transition:background .2s;
+}
+.btn-nav:hover{background:var(--clay-l)!important}
+.ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.4rem}
+.ham span{display:block;width:22px;height:1.5px;background:var(--white);border-radius:2px;transition:all .25s}
+.mob{display:none;flex-direction:column;background:var(--night);padding:1.25rem 1.5rem 1.75rem;gap:.25rem;border-top:1px solid rgba(255,255,255,.05)}
+.mob a{font-size:.975rem;color:rgba(255,255,255,.7);font-weight:400;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.mob-btn{background:var(--clay);color:var(--white)!important;padding:.8rem 1.5rem;border-radius:9999px;text-align:center;margin-top:.75rem;font-weight:500;display:block}
+.mob.open{display:flex}
+
+/* ── HERO ── */
+.hero{
+  position:relative;min-height:100vh;
+  display:flex;align-items:center;overflow:hidden;
+}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.hero-overlay{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(135deg,rgba(13,9,7,.85) 0%,rgba(26,16,8,.72) 45%,rgba(13,9,7,.55) 100%);
+}
+.hero-content{
+  position:relative;z-index:2;width:100%;max-width:var(--max);
+  margin:0 auto;padding:9rem 2.5rem 5rem;
+  display:grid;grid-template-columns:1fr 400px;gap:4rem;align-items:center;
+}
+.badge-hero{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(196,87,31,.18);border:1px solid rgba(196,87,31,.32);
+  color:var(--accent-warm);font-size:.72rem;font-weight:500;letter-spacing:.09em;
+  text-transform:uppercase;padding:.35rem 1rem;border-radius:9999px;margin-bottom:1.5rem;
+}
+h1{
+  font-family:var(--serif);font-size:clamp(2.8rem,5.5vw,5rem);
+  font-weight:400;line-height:1.06;color:var(--white);
+  margin-bottom:1.25rem;letter-spacing:-.01em;
+}
+h1 em{font-style:italic;color:var(--accent-warm)}
+.hero-sub{
+  font-size:1.05rem;color:rgba(255,255,255,.6);line-height:1.72;
+  margin-bottom:2rem;max-width:520px;font-weight:300;letter-spacing:-.012em;
+}
+.hero-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.25rem}
+.hero-pill{
+  display:inline-flex;align-items:center;gap:.3rem;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);
+  color:rgba(255,255,255,.82);font-size:.78rem;font-weight:400;
+  letter-spacing:-.01em;padding:.38rem .875rem;border-radius:9999px;
+}
+.ctas{display:flex;gap:.875rem;flex-wrap:wrap}
+.btn-p{
+  background:var(--clay);color:var(--white);
+  padding:.875rem 2.25rem;border-radius:9999px;font-size:.95rem;font-weight:500;
+  letter-spacing:-.01em;transition:background .2s,transform .15s;display:inline-block;
+}
+.btn-p:hover{background:var(--clay-l);transform:translateY(-1px)}
+.btn-s{
+  border:1.5px solid rgba(255,255,255,.3);color:rgba(255,255,255,.88);
+  padding:.75rem 1.875rem;border-radius:9999px;font-size:.95rem;font-weight:400;
+  letter-spacing:-.012em;transition:all .2s;display:inline-block;
+}
+.btn-s:hover{border-color:rgba(255,255,255,.65);color:var(--white)}
+
+/* Hero floating card */
+.hero-card{
+  background:rgba(255,255,255,.06);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+  border:1px solid rgba(255,255,255,.11);border-radius:20px;padding:1.75rem;
+  display:flex;flex-direction:column;gap:1.25rem;
+}
+.hc-title{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.35rem}
+.hc-stats{display:grid;grid-template-columns:1fr 1fr;gap:.875rem}
+.hcs{
+  background:rgba(255,255,255,.05);border-radius:12px;padding:.875rem;
+  text-align:center;border:1px solid rgba(255,255,255,.06);
+}
+.hcs-n{font-family:var(--serif);font-size:2.1rem;font-weight:400;color:var(--white);line-height:1}
+.hcs-l{font-size:.67rem;color:rgba(255,255,255,.4);margin-top:.3rem;letter-spacing:.05em;text-transform:uppercase}
+.hc-rating{
+  display:flex;align-items:center;gap:.875rem;
+  background:rgba(196,147,42,.1);border:1px solid rgba(196,147,42,.18);
+  border-radius:12px;padding:.875rem;
+}
+.hc-rating-n{font-family:var(--serif);font-size:2rem;font-weight:400;color:#E8B84B;line-height:1;flex-shrink:0}
+.hc-rating-lbl strong{font-size:.9rem;color:var(--white);display:block;font-weight:500;letter-spacing:-.01em}
+.hc-rating-lbl span{font-size:.72rem;color:rgba(255,255,255,.38)}
+.hc-cta{
+  background:var(--clay);color:var(--white);text-align:center;
+  padding:.875rem;border-radius:9999px;font-size:.875rem;font-weight:500;
+  letter-spacing:-.01em;transition:background .2s;display:block;
+}
+.hc-cta:hover{background:var(--clay-l)}
+
+/* Scroll indicator */
+.scroll-ind{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:2;
+  display:flex;flex-direction:column;align-items:center;gap:.45rem;
+  color:rgba(255,255,255,.28);animation:fadeInUp 1.5s ease 1.2s both;
+}
+.scroll-ind span{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase}
+.scroll-dot{width:1px;height:36px;background:linear-gradient(to bottom,rgba(255,255,255,.35),transparent)}
+@keyframes fadeInUp{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+
+/* ── TRUST BAR ── */
+.trust-bar{
+  background:var(--night2);border-top:1px solid rgba(255,255,255,.04);
+  padding:.9rem 2.5rem;display:flex;justify-content:center;align-items:center;gap:1.5rem;flex-wrap:wrap;
+}
+.tb-item{display:flex;align-items:center;gap:.45rem;font-size:.8rem;color:rgba(255,255,255,.45)}
+.tb-item strong{color:rgba(255,255,255,.72);font-weight:500}
+.tb-sep{width:1px;height:14px;background:rgba(255,255,255,.1);flex-shrink:0}
+
+/* ── SECTIONS ── */
+.wrap{max-width:var(--max);margin:0 auto}
+section{padding:5.5rem 2.5rem}
+.tag{font-size:.7rem;font-weight:600;color:var(--clay);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.875rem}
+h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);font-weight:400;line-height:1.12;margin-bottom:1rem;letter-spacing:-.01em}
+.s-sub{font-size:1rem;color:var(--muted);line-height:1.72;max-width:530px;margin-bottom:3rem;font-weight:300;letter-spacing:-.012em}
+
+/* ── FEATURES ── */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.125rem}
+.feat{
+  background:var(--white);border-radius:var(--r);
+  box-shadow:var(--sh);padding:1.75rem;
+  transition:box-shadow .25s,transform .2s;
+}
+.feat:hover{box-shadow:var(--sh-hover);transform:translateY(-2px)}
+.feat.hi{background:var(--clay)}
+.feat.hi .ft{color:var(--white)}
+.feat.hi .fd{color:rgba(255,255,255,.72)}
+.feat.hi .ficon{background:rgba(255,255,255,.14);color:var(--white)}
+.ficon{
+  width:44px;height:44px;background:rgba(196,87,31,.07);
+  border-radius:10px;display:flex;align-items:center;justify-content:center;
+  margin-bottom:.875rem;font-size:1.2rem;color:var(--clay);
+}
+.ft{font-weight:600;font-size:.975rem;margin-bottom:.4rem;color:var(--text);letter-spacing:-.015em}
+.fd{font-size:.862rem;color:var(--muted);line-height:1.62;font-weight:300}
+
+/* ── GALLERY ── */
+.gal-section{background:var(--night);padding:5.5rem 2.5rem}
+.gal-section .tag{color:var(--accent-warm)}
+.gal-section h2{color:var(--white)}
+.gal{
+  display:grid;
+  grid-template-columns:1.7fr 1fr 1fr;
+  grid-template-rows:290px 230px;
+  gap:.75rem;margin-top:2rem;
+}
+.gi{border-radius:var(--r);overflow:hidden;background:#2A1A10}
+.gi img{width:100%;height:100%;object-fit:cover;transition:transform .5s;display:block}
+.gi:hover img{transform:scale(1.04)}
+.gi-main{grid-row:1/3}
+
+/* ── LOCATION ── */
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}
+.map{height:390px;border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
+.map iframe{width:100%;height:100%;border:none}
+.dlist{list-style:none}
+.dlist li{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:.875rem 0;border-bottom:1px solid var(--border-light);font-size:.9rem;
+}
+.dlist li:last-child{border-bottom:none}
+.dp{font-weight:400;color:var(--text);letter-spacing:-.01em}
+.dt{color:var(--clay);font-weight:600;font-size:.825rem}
+
+/* ── FAQ ── */
+.faq-sec{background:var(--white)}
+.faq-wrap{max-width:680px}
+details{border-bottom:1px solid var(--border)}
+summary{
+  padding:1.25rem 0;cursor:pointer;font-weight:500;font-size:.95rem;
+  list-style:none;display:flex;justify-content:space-between;align-items:center;
+  gap:1rem;letter-spacing:-.015em;color:var(--text);
+}
+summary::after{content:'+';color:var(--clay);font-size:1.25rem;font-weight:300;flex-shrink:0;line-height:1}
+details[open] summary::after{content:'\2212'}
+summary::-webkit-details-marker{display:none}
+.fa{padding:0 2rem 1.25rem 0;color:var(--muted);font-size:.9rem;line-height:1.78;font-weight:300}
+
+/* ── BOOKING ── */
+.book-sec{
+  background:var(--night);
+  background-image:radial-gradient(ellipse 70% 50% at 50% -5%,rgba(196,87,31,.11) 0%,transparent 60%);
+  padding:6rem 2.5rem;text-align:center;
+}
+.book-sec .tag{color:rgba(244,164,122,.75)}
+.book-sec h2{color:var(--white)}
+.book-sec .s-sub{color:rgba(255,255,255,.5);margin:0 auto 2.5rem;font-weight:300}
+#apartmentIframe352007{min-height:600px;width:100%}
+
+/* ── REVIEWS ── */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.125rem}
+.rev{background:var(--white);box-shadow:var(--sh);border-radius:var(--r);padding:1.75rem}
+.stars{color:var(--gold);font-size:1rem;margin-bottom:.875rem;letter-spacing:.06em}
+.rt{font-size:.875rem;color:var(--muted);line-height:1.72;margin-bottom:1rem;font-style:italic;font-weight:300}
+.ra{font-size:.85rem;font-weight:600;color:var(--text);letter-spacing:-.01em}
+.rs{font-size:.75rem;color:var(--muted2);margin-top:.2rem}
+
+/* ── FOOTER ── */
+footer{background:var(--night);color:rgba(255,255,255,.65);padding:4rem 2.5rem 2rem}
+.fg{display:grid;grid-template-columns:2.4fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.fb{font-family:var(--serif);font-size:1.55rem;color:var(--white);margin-bottom:.875rem;font-weight:400;letter-spacing:.02em}
+.ft2{font-size:.875rem;color:rgba(255,255,255,.4);line-height:1.65;max-width:240px;font-weight:300}
+.fh{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.3);margin-bottom:1.25rem}
+.fl{list-style:none;display:flex;flex-direction:column;gap:.75rem}
+.fl a{font-size:.862rem;color:rgba(255,255,255,.5);transition:color .2s;font-weight:300}
+.fl a:hover{color:rgba(255,255,255,.88)}
+.fbot{border-top:1px solid rgba(255,255,255,.06);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem}
+.fbot p,.fvft{font-size:.762rem;color:rgba(255,255,255,.28);font-weight:300}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .hero-content{grid-template-columns:1fr;max-width:640px}
+  .hero-card{display:none}
+  .feat-grid{grid-template-columns:1fr 1fr}
+  .rev-grid{grid-template-columns:1fr 1fr}
+  .fg{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  nav{padding:0 1.25rem}
+  .nav-links{display:none}
+  .ham{display:flex}
+  section,.gal-section,.book-sec,footer{padding:3.5rem 1.25rem}
+  h1{font-size:2.6rem}
+  .hero-content{padding:8rem 1.25rem 4rem}
+  .trust-bar{padding:.875rem 1.25rem;gap:.875rem}
+  .tb-sep{display:none}
+  .gal{grid-template-columns:1fr 1fr;grid-template-rows:170px 170px 170px}
+  .gi-main{grid-row:1/2;grid-column:1/3}
+  .feat-grid{grid-template-columns:1fr}
+  .loc-grid{grid-template-columns:1fr;gap:2rem}
+  .map{height:280px}
+  .rev-grid{grid-template-columns:1fr}
+  .fg{grid-template-columns:1fr;gap:2rem}
+  .fbot{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainnav">
+  <a href="/" class="brand">House Sevillana</a>
+  <div class="nav-links">
+    <a href="#caracteristicas">La casa</a>
+    <a href="#galeria">Fotos</a>
+    <a href="#ubicacion">Ubicaci&oacute;n</a>
+    <a href="#faq">FAQ</a>
+    <a href="#reserva" class="btn-nav">Reservar directo</a>
+  </div>
+  <button class="ham" id="ham" aria-label="Men&uacute;"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mob" id="mob">
+  <a href="#caracteristicas" onclick="cm()">La casa</a>
+  <a href="#galeria" onclick="cm()">Fotos</a>
+  <a href="#ubicacion" onclick="cm()">Ubicaci&oacute;n</a>
+  <a href="#faq" onclick="cm()">FAQ</a>
+  <a href="#reserva" class="mob-btn" onclick="cm()">Reservar directo</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg">
+    <img src="https://lh3.googleusercontent.com/d/1YRd-RfZKbIq-I8UqxzH3Qo4HP_6E_UF4"
+         alt="Fachada House Sevillana &mdash; casa tur&iacute;stica con parking en el centro hist&oacute;rico de Sevilla"
+         loading="eager" fetchpriority="high"/>
+  </div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div>
+      <div class="badge-hero">&#9733; Reserva directa &middot; Sin comisiones</div>
+      <h1>Casa con <em>parking</em><br>en el coraz&oacute;n<br>de Sevilla</h1>
+      <p class="hero-sub">290 m&sup2; reformados en el casco hist&oacute;rico. 6 dormitorios, 4 ba&ntilde;os, terraza, patio andaluz y parking privado &mdash; para grupos y familias de hasta 12 personas.</p>
+      <div class="hero-pills">
+        <span class="hero-pill">&#127968; 290 m&sup2;</span>
+        <span class="hero-pill">&#128717; 6 dorm &middot; 4 ba&ntilde;os</span>
+        <span class="hero-pill">&#128663; Parking privado</span>
+        <span class="hero-pill">&#9728; Terraza + Patio</span>
+        <span class="hero-pill">&#128101; Hasta 12 personas</span>
+      </div>
+      <div class="ctas">
+        <a href="#reserva" class="btn-p">Consultar disponibilidad</a>
+        <a href="#caracteristicas" class="btn-s">Ver la casa</a>
+      </div>
+    </div>
+
+    <!-- Floating stats card (desktop) -->
+    <div class="hero-card">
+      <div>
+        <div class="hc-title">La propiedad</div>
+        <div class="hc-stats">
+          <div class="hcs"><div class="hcs-n">290</div><div class="hcs-l">m&sup2;</div></div>
+          <div class="hcs"><div class="hcs-n">6</div><div class="hcs-l">Dorm.</div></div>
+          <div class="hcs"><div class="hcs-n">4</div><div class="hcs-l">Ba&ntilde;os</div></div>
+          <div class="hcs"><div class="hcs-n">12</div><div class="hcs-l">Hu&eacute;spedes</div></div>
+        </div>
+      </div>
+      <div class="hc-rating">
+        <div class="hc-rating-n">8.1</div>
+        <div class="hc-rating-lbl">
+          <strong>Muy bien valorado</strong>
+          <span>Booking.com &middot; 4.771.238</span>
+        </div>
+      </div>
+      <a href="#reserva" class="hc-cta">Ver disponibilidad &#8594;</a>
+    </div>
+  </div>
+
+  <div class="scroll-ind">
+    <div class="scroll-dot"></div>
+    <span>scroll</span>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="tb-item">&#128663; <strong>Parking privado</strong> &mdash; el &uacute;nico del barrio</div>
+  <div class="tb-sep"></div>
+  <div class="tb-item">&#10003; <strong>Confirmaci&oacute;n inmediata</strong></div>
+  <div class="tb-sep"></div>
+  <div class="tb-item">&#128176; Sin comisiones &mdash; <strong>ahorra hasta un 22%</strong> vs Booking</div>
+  <div class="tb-sep"></div>
+  <div class="tb-item">&#11088; <strong>8.1 / 10</strong> en Booking.com</div>
+</div>
+
+<!-- CARACTERÍSTICAS -->
+<section id="caracteristicas">
+  <div class="wrap">
+    <div class="tag">La casa</div>
+    <h2>Una casa sevillana para vivirla</h2>
+    <p class="s-sub">290 m&sup2; reformados con materiales nobles en el coraz&oacute;n del casco hist&oacute;rico. Pensada para grupos y familias que quieren espacio, comodidad y autenticidad.</p>
+    <div class="feat-grid">
+      <div class="feat hi">
+        <div class="ficon">&#128663;</div>
+        <div class="ft">Parking privado en el edificio</div>
+        <div class="fd">Rars&iacute;simo en el casco antiguo de Sevilla. 1 plaza de garaje reservable con tu estancia. Aparcar en zona hist&oacute;rica ya no es un problema.</div>
+      </div>
+      <div class="feat">
+        <div class="ficon">&#127968;</div>
+        <div class="ft">6 dormitorios dobles</div>
+        <div class="fd">Todos con camas de matrimonio. Capacidad real para hasta 12 personas sin perder comodidad.</div>
+      </div>
+      <div class="feat">
+        <div class="ficon">&#128705;</div>
+        <div class="ft">4 ba&ntilde;os completos</div>
+        <div class="fd">Con ducha o ba&ntilde;era, toallas y art&iacute;culos de bienvenida incluidos para todos los hu&eacute;spedes.</div>
+      </div>
+      <div class="feat">
+        <div class="ficon">&#127795;</div>
+        <div class="ft">Patio andaluz</div>
+        <div class="fd">Aut&eacute;ntico patio sevillano con azulejos y fuente interior. El favorito de todos los que nos visitan.</div>
+      </div>
+      <div class="feat">
+        <div class="ficon">&#9728;</div>
+        <div class="ft">Terraza con vistas</div>
+        <div class="fd">Azotea privada con vistas al casco hist&oacute;rico. El lugar ideal para las noches de verano sevillano.</div>
+      </div>
+      <div class="feat">
+        <div class="ficon">&#127859;</div>
+        <div class="ft">Cocina totalmente equipada</div>
+        <div class="fd">Horno, microondas, nevera grande, cafetera y utensilios completos. Lista para cocinar para 12.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<div class="gal-section" id="galeria">
+  <div class="wrap">
+    <div class="tag">Fotos</div>
+    <h2>La casa por dentro</h2>
+    <div class="gal">
+      <div class="gi gi-main">
+        <img src="https://lh3.googleusercontent.com/d/1rDXs-fjAmmDQFTfZ7fTutPZvosAV2GMo"
+             alt="Sal&oacute;n principal House Sevillana &mdash; 290 m&sup2; en el casco hist&oacute;rico de Sevilla" loading="lazy"/>
+      </div>
+      <div class="gi">
+        <img src="https://lh3.googleusercontent.com/d/11KXrpvDr9wfO3W7ds0TSzMj1W7ixnQVQ"
+             alt="Dormitorio House Sevillana &mdash; 6 habitaciones dobles en Sevilla centro" loading="lazy"/>
+      </div>
+      <div class="gi">
+        <img src="https://lh3.googleusercontent.com/d/1oAiLqJlHLGc6iqIFtiXqZqTandNKewRf"
+             alt="Patio andaluz House Sevillana &mdash; patio interior con azulejos t&iacute;picos sevillanos" loading="lazy"/>
+      </div>
+      <div class="gi">
+        <img src="https://lh3.googleusercontent.com/d/1nSzkddZhv8ul5HMXpVsfJZfL8XJZMuzd"
+             alt="Cocina House Sevillana &mdash; cocina equipada para grupos grandes" loading="lazy"/>
+      </div>
+      <div class="gi">
+        <img src="https://lh3.googleusercontent.com/d/1YRd-RfZKbIq-I8UqxzH3Qo4HP_6E_UF4"
+             alt="Fachada House Sevillana &mdash; casa hist&oacute;rica con parking en Sevilla" loading="lazy"/>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UBICACIÓN -->
+<section id="ubicacion">
+  <div class="wrap">
+    <div class="tag">Ubicaci&oacute;n</div>
+    <h2>En el coraz&oacute;n del casco hist&oacute;rico</h2>
+    <p class="s-sub">Calle Socorro 24, barrio de San Juli&aacute;n (41003 Sevilla). A pasos del Palacio de las Due&ntilde;as y la Iglesia de San Luis de los Franceses.</p>
+    <div class="loc-grid">
+      <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3170.8!2d-5.9924!3d37.3942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDIzJzM5LjEiTiA1wrA1OSczMi42Ilc!5e0!3m2!1ses!2ses!4v1"
+                allowfullscreen loading="lazy" title="Ubicaci&oacute;n House Sevillana &mdash; Calle Socorro 24, Sevilla"></iframe>
+      </div>
+      <ul class="dlist">
+        <li><span class="dp">Palacio de las Due&ntilde;as</span><span class="dt">2 min a pie</span></li>
+        <li><span class="dp">San Luis de los Franceses</span><span class="dt">4 min a pie</span></li>
+        <li><span class="dp">Catedral de Sevilla</span><span class="dt">10 min a pie</span></li>
+        <li><span class="dp">Real Alc&aacute;zar</span><span class="dt">12 min a pie</span></li>
+        <li><span class="dp">Torre del Oro</span><span class="dt">14 min a pie</span></li>
+        <li><span class="dp">Plaza de Espa&ntilde;a</span><span class="dt">15 min a pie</span></li>
+        <li><span class="dp">Barrio de Triana</span><span class="dt">20 min a pie</span></li>
+        <li><span class="dp">Estaci&oacute;n Santa Justa</span><span class="dt">25 min a pie</span></li>
+        <li><span class="dp">Aeropuerto SVQ</span><span class="dt">20 min en taxi</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<div class="faq-sec">
+  <section id="faq">
+    <div class="wrap">
+      <div class="tag">Preguntas frecuentes</div>
+      <h2>Todo lo que necesitas saber</h2>
+      <div class="faq-wrap">
+        <details open>
+          <summary>&iquest;Tiene parking privado House Sevillana?</summary>
+          <div class="fa">S&iacute;. Dispone de una plaza de garaje privado en el mismo edificio, reservable con tu estancia (peque&ntilde;o coste adicional). Aparcar en el casco antiguo de Sevilla es muy complicado &mdash; esta es nuestra ventaja m&aacute;s valorada por los hu&eacute;spedes que llegan en coche.</div>
+        </details>
+        <details>
+          <summary>&iquest;Cu&aacute;ntas personas caben en la casa?</summary>
+          <div class="fa">6 dormitorios dobles para hasta 12 personas. Perfecta para grupos de amigos, familias numerosas multigeneracionales o varias parejas que viajan juntas por Sevilla.</div>
+        </details>
+        <details>
+          <summary>&iquest;D&oacute;nde est&aacute; ubicada exactamente?</summary>
+          <div class="fa">Calle Socorro 24, 41003 Sevilla, en el barrio hist&oacute;rico de San Juli&aacute;n. A menos de 10 minutos a pie de la Catedral y el Alc&aacute;zar, y pr&aacute;cticamente al lado del Palacio de las Due&ntilde;as.</div>
+        </details>
+        <details>
+          <summary>&iquest;Qu&eacute; ventaja tiene reservar directamente?</summary>
+          <div class="fa">Te ahorras la comisi&oacute;n que cobran los portales (hasta un 22% en Booking.com). Adem&aacute;s te comunicas directamente con el propietario para cualquier necesidad antes o durante tu estancia, sin intermediarios.</div>
+        </details>
+        <details>
+          <summary>&iquest;Cu&aacute;les son los horarios de entrada y salida?</summary>
+          <div class="fa">Check-in a partir de las 15:00 h. Check-out hasta las 12:00 h. Cons&uacute;ltanos si necesitas horario flexible.</div>
+        </details>
+        <details>
+          <summary>&iquest;Incluye ropa de cama y toallas?</summary>
+          <div class="fa">S&iacute;. Ropa de cama y toallas para todos los hu&eacute;spedes est&aacute;n incluidas en la reserva.</div>
+        </details>
+        <details>
+          <summary>&iquest;Qu&eacute; licencia tur&iacute;stica tiene la propiedad?</summary>
+          <div class="fa">VFT/SE/01179, inscrita en el Registro de Turismo de Andaluc&iacute;a conforme a la normativa vigente de viviendas con fines tur&iacute;sticos (VFT).</div>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- BOOKING -->
+<div class="book-sec" id="reserva">
+  <div class="wrap">
+    <div class="tag">Reserva directa</div>
+    <h2>Comprueba disponibilidad</h2>
+    <p class="s-sub">Reserva directamente sin intermediarios. Sin comisiones. Confirmaci&oacute;n inmediata.</p>
+    <div id="apartmentIframe352007"></div>
+  </div>
+</div>
+
+<!-- RESEÑAS -->
+<section id="resenas">
+  <div class="wrap">
+    <div class="tag">Rese&ntilde;as</div>
+    <h2>Lo que dicen nuestros hu&eacute;spedes</h2>
+    <div class="rev-grid">
+      <div class="rev">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="rt">"Casa espectacular. El patio andaluz es un sue&ntilde;o. Dormimos 10 personas comod&iacute;simas y el parking fue un plus enorme en el casco hist&oacute;rico."</p>
+        <div class="ra">Mar&iacute;a G.</div><div class="rs">Booking.com &middot; 9.8/10</div>
+      </div>
+      <div class="rev">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="rt">"Incredibly spacious house in the perfect location. The rooftop terrace with evening views was our favourite spot. Great for a large family."</p>
+        <div class="ra">James T.</div><div class="rs">Airbnb &middot; 5/5</div>
+      </div>
+      <div class="rev">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="rt">"Maison parfaite pour un grand groupe. Tr&egrave;s bien situ&eacute;, facile de se d&eacute;placer dans S&eacute;ville. Le propri&eacute;taire tr&egrave;s r&eacute;actif. On recommande &agrave; 100%."</p>
+        <div class="ra">Claire D.</div><div class="rs">Booking.com &middot; 9.6/10</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="fg">
+      <div>
+        <div class="fb">House Sevillana</div>
+        <p class="ft2">Casa tur&iacute;stica en el casco hist&oacute;rico de Sevilla. 290 m&sup2;, 6 dormitorios, parking privado. Reserva directa sin comisiones.</p>
+        <p style="margin-top:.875rem;font-size:.75rem;color:rgba(255,255,255,.28);font-weight:300">VFT/SE/01179</p>
+      </div>
+      <div>
+        <div class="fh">La casa</div>
+        <ul class="fl">
+          <li><a href="#caracteristicas">Caracter&iacute;sticas</a></li>
+          <li><a href="#galeria">Galer&iacute;a</a></li>
+          <li><a href="#ubicacion">Ubicaci&oacute;n</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fh">Reservar</div>
+        <ul class="fl">
+          <li><a href="#reserva">Reserva directa</a></li>
+          <li><a href="https://www.booking.com/hotel/es/house-sevillana-parking.es.html" target="_blank" rel="noopener noreferrer">Booking.com</a></li>
+          <li><a href="https://www.airbnb.es" target="_blank" rel="noopener noreferrer">Airbnb</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fh">Contacto</div>
+        <ul class="fl">
+          <li><a href="mailto:alberto.suarez.gutierrez@gmail.com">Email</a></li>
+          <li><a href="tel:+34637349990">+34 637 349 990</a></li>
+          <li><a href="https://maps.google.com/?q=Calle+Socorro+24+Sevilla" target="_blank" rel="noopener noreferrer">Calle Socorro 24, Sevilla</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <p>&copy; 2025 House Sevillana &middot; Bercell &middot; Todos los derechos reservados</p>
+      <span class="fvft">VFT/SE/01179 &middot; Registro de Turismo de Andaluc&iacute;a</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav=document.getElementById('mainnav');
+  function sc(){nav.classList.toggle('scrolled',window.scrollY>60)}
+  window.addEventListener('scroll',sc,{passive:true});sc();
+})();
+document.getElementById('ham').onclick=function(){document.getElementById('mob').classList.toggle('open')};
+function cm(){document.getElementById('mob').classList.remove('open')}
+(function(){
+  var s=document.createElement('script');
+  s.src='https://login.smoobu.com/js/Settings/BookingToolIframe.js';
+  s.onload=function(){
+    BookingToolIframe.initialize({
+      url:'https://login.smoobu.com/es/booking-tool/iframe/103685/352007',
+      baseUrl:'https://login.smoobu.com',
+      target:'#apartmentIframe352007'
+    });
+  };
+  document.body.appendChild(s);
+})();
+</script>
+</body>
+</html>`;
+
+export const runtime = 'edge';
 
 export async function GET() {
   return new NextResponse(HTML, {
     headers: {
       'Content-Type': 'text/html; charset=utf-8',
-      'Cache-Control': 'public, max-age=3600',
+      'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
     },
   });
 }
-export const runtime = 'edge';
