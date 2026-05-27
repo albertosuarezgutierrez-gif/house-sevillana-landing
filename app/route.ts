@@ -266,6 +266,11 @@ footer{background:var(--night);color:rgba(255,255,255,.65);padding:4rem 2.5rem 2
   .wa-btn{bottom:2rem}
 }
 </style>
+<!-- Meta Pixel retargeting -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','XXXXXXXXXXXXXXX');fbq('track','PageView');
+</script>
 </head>
 <body>
 
@@ -771,6 +776,46 @@ function cm(){document.getElementById('mob').classList.remove('open')}
   update();
 })();
 </script>
+
+<!-- Sección Reviews -->
+<section style="background:#fdf6f0;padding:48px 24px">
+  <div style="max-width:900px;margin:0 auto">
+    <h2 style="text-align:center;font-size:clamp(20px,3vw,28px);margin-bottom:8px;font-family:Georgia,serif">Lo que dicen los huéspedes</h2>
+    <p style="text-align:center;color:#666;font-size:14px;margin-bottom:32px">⭐⭐⭐⭐⭐ 9.2/10 en Booking · 4.9/5 en Airbnb</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px">
+      <div style="background:white;border-radius:14px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)">
+        <div style="font-size:15px;color:#f59e0b;margin-bottom:10px">★★★★★</div>
+        <p style="font-size:14px;color:#374151;line-height:1.6;margin-bottom:12px">"La casa más especial donde nos hemos alojado. El patio andaluz es increíble y el parking privado fue clave con el coche. Volveremos seguro."</p>
+        <div style="font-size:12px;color:#9ca3af">María G. · Familia de 8 · Booking</div>
+      </div>
+      <div style="background:white;border-radius:14px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)">
+        <div style="font-size:15px;color:#f59e0b;margin-bottom:10px">★★★★★</div>
+        <p style="font-size:14px;color:#374151;line-height:1.6;margin-bottom:12px">"Perfecta para grupos grandes. 6 habitaciones y todo el espacio que necesitas. A 10 minutos de la Catedral a pie. Alberto muy atento."</p>
+        <div style="font-size:12px;color:#9ca3af">James T. · Grupo de amigos · Airbnb</div>
+      </div>
+      <div style="background:white;border-radius:14px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)">
+        <div style="font-size:15px;color:#f59e0b;margin-bottom:10px">★★★★★</div>
+        <p style="font-size:14px;color:#374151;line-height:1.6;margin-bottom:12px">"Vinimos para una boda en Sevilla. La terraza fue perfecta para prepararnos. El barrio de la Macarena es precioso y auténtico."</p>
+        <div style="font-size:12px;color:#9ca3af">Claudia M. · Grupo boda · Booking</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Links internos SEO -->
+<section style="background:#1a1a1a;padding:32px 24px">
+  <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px">
+    <a href="/que-ver" style="background:#2d2d2d;color:white;padding:12px 16px;border-radius:10px;text-decoration:none;font-size:13px">
+      🗺️ Qué ver en Sevilla
+    </a>
+    <a href="/barrio" style="background:#2d2d2d;color:white;padding:12px 16px;border-radius:10px;text-decoration:none;font-size:13px">
+      🏘️ El barrio de la Macarena
+    </a>
+    <a href="https://reservas.house-sevillana.com" style="background:#B04E2A;color:white;padding:12px 16px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700">
+      📅 Comprobar disponibilidad
+    </a>
+  </div>
+</section>
 </body>
 </html>`;
 
