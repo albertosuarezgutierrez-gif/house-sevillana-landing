@@ -8,7 +8,7 @@ const HTML = `<!DOCTYPE html>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNSIgZmlsbD0iI0IwNEUyQSIvPjx0ZXh0IHg9IjE2IiB5PSIyMS41IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIxNC41IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjAuNSI+SFM8L3RleHQ+PC9zdmc+"/>
 
 <!-- SEO Primary -->
-<title>Casa con Parking en el Centro de Sevilla | House Sevillana</title>
+<title>Casa Sevilla Centro</title>
 <meta name="description" content="290 m&sup2; en el casco hist&oacute;rico de Sevilla. 6 dormitorios, 4 ba&ntilde;os, parking privado, terraza y patio andaluz. Hasta 12 personas. Reserva directa sin comisiones."/>
 <link rel="canonical" href="https://www.housesevillana.es/"/>
 
